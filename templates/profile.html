@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Profile</h1>
+    </div>
+    
+    <div class="profile-container">
+        <div class="content-box" id="info-content">
+            <h1>Account Holder</h1>
+            <h2>{{ user.FirstName }}  {{ user.LastName }}</h2>
+            <p>Email: {{ user.Email }} </p>
+            <p>Phone: {{ user.Phone }} </p>
+            <p>License #: {{ user.LicenseNumber }}</p>
+            <p>Address: {{ address.AddressLine1 }} {{ address.AddressLine2 }}
+            </p>
+            <p>
+                {{ address.City }}, {{ address.State }}, {{ address.Zip }}
+            </p>
+        </div>
+        <div class="content-box" id="info-content">
+            <h1>Vehicle Info</h1>
+            <h2>{{ vehicle.Brand }}  {{ vehicle.Model }}</h2>
+            <p>Year: {{ vehicle.Year }} </p>
+            <p>Mileage: {{ vehicle.Mileage }} </p>
+            <p>Vehicle Type: {{ vehicle.VehicleType }} </p>
+            <p>License Plate Number: {{ vehicle.LicensePlate }} </p>
+            <p>VIN: {{ vehicle.VIN }}</p>
+        </div>
+        <div class="content-box" id="info-content">
+            <h1>Current Contract</h1>
+            <p>Coverage Type: {{ policy.CoverageType }} </p>
+            <p>Maximum Coverage: ${{ policy.MaxCoverage }} </p>
+            <p>Monthly Premium: ${{ policy.MonthlyPremium }} </p>
+            <p>Contract ID: {{ policy.ContractID }} </p>
+        </div>
+        <div class="content-box" id="info-content">
+            <h1>Driving History</h1>
+            <p>Traffic Violations: {{profile.trafficviolations}}</p>
+            <p>Accidents: {{profile.accidents}}</p>
+            <p>Years of Driving Experience: {{ profile.drivingexperience}}</p>
+        </div>
+       
+    </div>
+{% endblock content %}
+    

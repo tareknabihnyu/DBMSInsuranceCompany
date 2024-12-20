@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM loaded')
+        const submitBtn = document.getElementById('submit-button')
+
+        submitBtn.addEventListener('click', (evt) => {
+            evt.preventDefault()
+
+            // ajax POST to endpoint /file-clai
+            // with data from form
+            // on success, display success message and remove form
+
+            const accidentDate = document.getElementById('accident-date').value
+            const accidentDescription = document.getElementById('accident-description').value
+            const claimAmount = document.getElementById('claim-amount').value
+
+            const data = {
+                accidentDate: accidentDate,
+                accidentDesc: accidentDescription,
+                claimAmount: claimAmount
+            }
+
+            fetch('/file-claim', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+                const container = document.getElementById('info-content')
+                container.innerHTML = '<h1>Claim Filed Successfully! Please allow 3-5 business days for us to review your claim.</h1>'
+            })
+            .catch(error => console.log(error))
+        })
+    })
+</script>
+
+<div class="profile-container">
+    <div class="content-box" id="info-content">
+        <h1>File a Claim Online</h1>
+        <p1>Please fill out this form below to file a claim with no paperwork required.</p1>
+
+
+        <div>
+            <label for="accident-date">Accident Date:</label>
+            <input type="date" id="accident-date" name="accident-date" required>
+        </div>
+        
+        <div>
+            <label for="accident-description">Accident Description:</label>
+            
+        </div>
+        <textarea id="accident-description" name="accident-description" rows="4" cols="50" required></textarea>
+        <div>
+            <label for="claim-amount">Claim Amount ($):</label>
+            <input type="number" id="claim-amount" name="claim-amount" required>
+        </div>
+        <div>
+            <button id="submit-button">Submit</button>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

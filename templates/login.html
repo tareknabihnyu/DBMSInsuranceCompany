@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Insurance Facilitator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="ssnForm" class="form-group">
+
+            <h2>Welcome to Our Auto Insurance Service</h2>
+            <form action="/login" method="POST">
+                <label for="ssn">Enter your Social Security Number (SSN) to get started:</label>
+                <input type="text" id="ssn" name="ssn" placeholder="XXX-XX-XXXX">
+                <p id="ssnError"></p>
+                {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="error" style="color: red">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <button type="submit" id="ssnBtn">Submit</button>
+            </form>
+        </div>
+        
+    </div>  
+</body>
+</html>

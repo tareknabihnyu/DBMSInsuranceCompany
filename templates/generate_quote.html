@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+<div class="profile-container">
+    <div class="content-box" id="info-content">
+        <h1>Switch Plans & Save Today with {{company.CompanyName}}</h1>
+        <h2>Using powerful AI tools, we can instantly generate a quote!</h2>
+        <button id="submit-button">GET A QUOTE</button>
+        <div class="hidden" id="prediction">
+            <p>Based on the information you have provided on file, we predict an average monthly premium of:</p>
+            <h1>${{ quote }}/month</h1>
+            <p>Please contact your representative agent to set up a meeting to discuss switching plans.</p>
+        </div>
+        
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const quote = document.getElementById('prediction')
+        const submitBtn = document.getElementById('submit-button')
+        submitBtn.addEventListener('click', () => {
+            quote.style.display = 'block';
+        })
+    });
+</script>
+
+    
+{% endblock content %}

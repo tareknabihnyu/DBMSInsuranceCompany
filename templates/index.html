@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Insurance Facilitator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!--<script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+</head>
+<body>
+
+    <div id="navbar-container" class="navbar">
+        <div class="title">
+            <h1>Auto Insurance Facilitator</h1>
+        </div>
+
+        <div class="left-link">
+            <a href="home">Home</a>
+            <a href="generate-quote">Generate Quote</a>
+            <a href="file-claim">File a Claim</a>
+            <a href="profile">Profile</a>
+        </div>
+        <div class="right-link">
+        </div>
+        
+    </div>
+    {% block content %}
+    {% endblock content %}
+   
+</body>
+</html>
+
